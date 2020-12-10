@@ -1,23 +1,23 @@
 package com.library.frame;
 
-import com.library.pojo.Publisher;
-import com.library.service.PublisherService;
+import com.library.pojo.Branch;
+import com.library.service.BranchService;
 
 import javax.swing.*;
 
 /**
  * @author MSI-NB
  */
-public class InsertPublisherFrame extends JInternalFrame {
+public class UpdateBranchFrame extends JInternalFrame {
     private JSpinner spinner;
     private JTextField textField;
     private JTextField textField2;
     private JButton jButton;
     private JButton jButton2;
-    public InsertPublisherFrame(){
+    public UpdateBranchFrame(){
         setIconifiable(true);
         setClosable(true);
-        setTitle("publisher register");
+        setTitle("branch info update");
         setSize(800,400);
         setLayout(null);
         init();
@@ -25,7 +25,7 @@ public class InsertPublisherFrame extends JInternalFrame {
     }
 
     private void init(){
-        JLabel jLabel=new JLabel("publisher id:");
+        JLabel jLabel=new JLabel("branch id:");
         jLabel.setBounds(50,50,150,30);
         add(jLabel);
 
@@ -33,7 +33,7 @@ public class InsertPublisherFrame extends JInternalFrame {
         spinner.setBounds(150,50,150,25);
         add(spinner);
 
-        JLabel jLabel1=new JLabel("publisher name:");
+        JLabel jLabel1=new JLabel("branch name:");
         jLabel1.setBounds(50,150,150,30);
         add(jLabel1);
 
@@ -41,7 +41,7 @@ public class InsertPublisherFrame extends JInternalFrame {
         textField.setBounds(150,150,150,25);
         add(textField);
 
-        JLabel jLabel2=new JLabel("publisher address:");
+        JLabel jLabel2=new JLabel("branch location:");
         jLabel2.setBounds(50,250,150,30);
         add(jLabel2);
 
@@ -69,17 +69,17 @@ public class InsertPublisherFrame extends JInternalFrame {
             textField.setText("");
         });
         jButton.addActionListener(e -> {
-            Publisher publisher=new Publisher();
-            publisher.setAddress(textField2.getText());
-            publisher.setPubName(textField.getText());
-            publisher.setPublisherId((Integer) spinner.getValue());
-            PublisherService publisherService=new PublisherService();
-            if(publisherService.insert(publisher)){
+            Branch branch=new Branch();
+            branch.setBid((Integer) spinner.getValue());
+            branch.setName(textField.getText());
+            branch.setLocation(textField2.getText());
+            BranchService service=new BranchService();
+            if(service.update(branch)){
                 JOptionPane.showMessageDialog(null,
-                        "register publisher success");
+                        "update branch success");
             }else{
                 JOptionPane.showMessageDialog(null,
-                        "register publisher fail");
+                        "update branch fail");
             }
         });
     }

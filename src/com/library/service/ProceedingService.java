@@ -16,7 +16,7 @@ public class ProceedingService {
 
     public boolean insert(Proceeding proceeding) {
         Connection conn = DatabaseTool.getConn();
-        String sql = "insert into document(docid, title, pdate, publisherid) values(?,?,?,?)";
+        String sql = "insert into document(docid, title, pdate, publisherid,author) values(?,?,?,?,?)";
         String sql2 = "insert into proceedings(docId, location, cDate) VALUE (?,?,?)";
         try {
             assert conn != null;
@@ -25,6 +25,7 @@ public class ProceedingService {
             statement.setString(2, proceeding.getTitle());
             statement.setString(3, proceeding.getpDate());
             statement.setInt(4, proceeding.getPublishId());
+            statement.setString(5, proceeding.getAuthor());
             PreparedStatement statement1 = conn.prepareStatement(sql2);
             statement1.setInt(1, proceeding.getDocId());
             statement1.setString(2, proceeding.getLocation());
@@ -40,7 +41,7 @@ public class ProceedingService {
 
     public boolean update(Proceeding proceeding) {
         Connection conn = DatabaseTool.getConn();
-        String sql = "update document set Title=?,PDate=?,PublisherId=? where DocId=?";
+        String sql = "update document set Title=?,PDate=?,PublisherId=?,author=? where DocId=?";
         String sql2 = "update proceedings set location=?,cDate=? where docId=?";
         try {
             assert conn != null;
@@ -48,7 +49,9 @@ public class ProceedingService {
             statement.setString(1, proceeding.getTitle());
             statement.setString(2,proceeding.getpDate());
             statement.setInt(3, proceeding.getPublishId());
-            statement.setInt(4, proceeding.getDocId());
+            statement.setString(4,proceeding.getAuthor());
+            statement.setInt(5, proceeding.getDocId());
+
             PreparedStatement statement1 = conn.prepareStatement(sql2);
             statement1.setString(1, proceeding.getLocation());
             statement1.setString(2, proceeding.getcDate());
@@ -80,7 +83,7 @@ public class ProceedingService {
     public List<Proceeding> list() {
         List<Proceeding> list=new ArrayList<>();
         Connection conn = DatabaseTool.getConn();
-        String sql = "select document.*,location,cDate from document inner join proceedings p on document.DocId = p.docId";
+        String sql = "select document.DocId,title, pdate, publisherid, author,location,cDate from document inner join proceedings p on document.DocId = p.docId";
         try {
             assert conn != null;
             Statement statement = conn.createStatement();
@@ -91,8 +94,9 @@ public class ProceedingService {
                 proceeding.setTitle(rs.getString(2));
                 proceeding.setpDate(rs.getString(3));
                 proceeding.setPublishId(rs.getInt(4));
-                proceeding.setLocation(rs.getString(5));
-                proceeding.setcDate(rs.getString(6));
+                proceeding.setAuthor(rs.getString(5));
+                proceeding.setLocation(rs.getString(6));
+                proceeding.setcDate(rs.getString(7));
                 list.add(proceeding);
             }
             return list;

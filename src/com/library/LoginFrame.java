@@ -40,29 +40,29 @@ public class LoginFrame extends JFrame {
     private void init() {
 
 
-        JLabel jLabel = new JLabel("Username:");
+        JLabel jLabel = new JLabel("username:");
         jLabel.setBounds(20, 50, 120, 30);
         add(jLabel);
         usernameTxt = new JTextField();
-        usernameTxt.setBounds(150, 50, 200, 30);
+        usernameTxt.setBounds(100, 50, 200, 30);
         add(usernameTxt);
-        JLabel jLabel1 = new JLabel("Password:");
+        JLabel jLabel1 = new JLabel("password:");
         jLabel1.setBounds(20, 100, 120, 30);
         add(jLabel1);
         passwordTxt = new JPasswordField();
-        passwordTxt.setBounds(150, 100, 200, 30);
+        passwordTxt.setBounds(100, 100, 200, 30);
         add(passwordTxt);
-        radioButton1 = new JRadioButton("Administrator");
-        radioButton1.setBounds(50, 200, 200, 30);
+        radioButton1 = new JRadioButton("manager");
+        radioButton1.setBounds(50, 200, 100, 30);
         add(radioButton1);
-        radioButton2 = new JRadioButton("Reader");
-        radioButton2.setBounds(350, 200, 120, 30);
+        radioButton2 = new JRadioButton("reader");
+        radioButton2.setBounds(250, 200, 100, 30);
         add(radioButton2);
         clearBtn = new JButton("clear");
         clearBtn.setBounds(50, 300, 100, 30);
         add(clearBtn);
         loginBtn = new JButton("login");
-        loginBtn.setBounds(350, 300, 100, 30);
+        loginBtn.setBounds(200, 300, 100, 30);
         radioButton1.setSelected(true);
         add(loginBtn);
         setLayout(null);

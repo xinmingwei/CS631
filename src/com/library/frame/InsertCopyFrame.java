@@ -51,7 +51,7 @@ public class InsertCopyFrame extends JInternalFrame {
         textField2.setBounds(150,250,150,25);
         add(textField2);
 
-        jButton=new JButton("append");
+        jButton=new JButton("add");
         jButton.setBounds(400,100,80,30);
         add(jButton);
 

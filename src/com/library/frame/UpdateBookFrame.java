@@ -16,6 +16,7 @@ public class UpdateBookFrame extends JInternalFrame {
     private JTextField textField2;
     private JTextField textField3;
     private JTextField textField4;
+    private JTextField textField5;
     private JButton jButton;
     private JButton jButton2;
     public UpdateBookFrame(){
@@ -69,6 +70,14 @@ public class UpdateBookFrame extends JInternalFrame {
         textField4.setBounds(150,450,150,25);
         add(textField4);
 
+        JLabel jLabel5=new JLabel("author:");
+        jLabel5.setBounds(50,490,150,30);
+        add(jLabel5);
+
+        textField5=new JTextField();
+        textField5.setBounds(150,490,150,25);
+        add(textField5);
+
 
         jButton=new JButton("update");
         jButton.setBounds(400,100,80,30);
@@ -89,6 +98,7 @@ public class UpdateBookFrame extends JInternalFrame {
             textField.setText("");
             textField3.setText("");
             textField4.setText("");
+            textField5.setText("");
         });
         jButton.addActionListener(e -> {
             Book book=new Book();
@@ -97,6 +107,7 @@ public class UpdateBookFrame extends JInternalFrame {
             book.setpDate(textField2.getText());
             book.setPublishId(Integer.parseInt(textField3.getText()));
             book.setIsbn(textField4.getText());
+            book.setAuthor(textField5.getText());
             BookService service=new BookService();
             if(service.update(book)){
                 JOptionPane.showMessageDialog(null,

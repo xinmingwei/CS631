@@ -16,6 +16,7 @@ public class UpdateJournalFrame extends JInternalFrame {
     private JSpinner textField4;
     private JSpinner textField5;
     private JTextField textField6;
+    private JTextField textField7;
     private JButton jButton;
     private JButton jButton2;
 
@@ -83,8 +84,16 @@ public class UpdateJournalFrame extends JInternalFrame {
         add(jLabel6);
 
         textField6 = new JTextField();
-        textField6.setBounds(450, 550, 150, 25);
+        textField6.setBounds(450, 500, 150, 25);
         add(textField6);
+
+        JLabel jLabel7 = new JLabel("scope:");
+        jLabel7.setBounds(350, 500, 150, 30);
+        add(jLabel7);
+
+        textField7 = new JTextField();
+        textField7.setBounds(450, 550, 150, 25);
+        add(textField7);
 
 
         jButton = new JButton("update");
@@ -109,6 +118,7 @@ public class UpdateJournalFrame extends JInternalFrame {
             textField4.setValue(0);
             textField5.setValue(0);
             textField6.setText("");
+            textField7.setText("");
         });
         jButton.addActionListener(e -> {
             Journal journal =new Journal();
@@ -119,6 +129,7 @@ public class UpdateJournalFrame extends JInternalFrame {
             journal.setVolumeNo((Integer) textField4.getValue());
             journal.setIssieNo((Integer) textField5.getValue());
             journal.setScope(textField6.getText());
+            journal.setAuthor(textField7.getText());
             JournalService service = new JournalService();
             if (service.update(journal)) {
                 JOptionPane.showMessageDialog(null,

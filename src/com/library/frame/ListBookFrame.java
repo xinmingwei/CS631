@@ -69,6 +69,7 @@ public class ListBookFrame extends JInternalFrame {
         vName.add("date");
         vName.add("publisher id");
         vName.add("isbn");
+        vName.add("author");
         for (Book b:service.list()){
             Vector vector=new Vector();
             vector.add(b.getDocId());
@@ -76,6 +77,7 @@ public class ListBookFrame extends JInternalFrame {
             vector.add(b.getpDate());
             vector.add(b.getPublishId());
             vector.add(b.getIsbn());
+            vector.add(b.getAuthor());
             vData.add(vector);
         }
         DefaultTableModel model = new DefaultTableModel(vData, vName);

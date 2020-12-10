@@ -24,7 +24,7 @@ public class InsertBorrowFrame extends JInternalFrame {
     public InsertBorrowFrame() {
         setIconifiable(true);
         setClosable(true);
-        setTitle("append borrow information");
+        setTitle("add borrow information");
         setSize(800, 670);
         setLayout(null);
         init();
@@ -88,7 +88,7 @@ public class InsertBorrowFrame extends JInternalFrame {
         textField6.setBounds(450, 550, 150, 25);
         add(textField6);
 
-        jButton = new JButton("append");
+        jButton = new JButton("add");
         jButton.setBounds(400, 100, 80, 30);
         add(jButton);
 
@@ -123,10 +123,10 @@ public class InsertBorrowFrame extends JInternalFrame {
             borrow.setCopyNumber((Integer) textField6.getValue());
             if (service.insert(borrow)) {
                 JOptionPane.showMessageDialog(null,
-                        "append borrow info success");
+                        "add borrow info success");
             } else {
                 JOptionPane.showMessageDialog(null,
-                        "append borrow info fail");
+                        "add borrow info fail");
             }
         });
     }

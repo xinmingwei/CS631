@@ -49,6 +49,13 @@ public class LibraryApp extends JFrame {
     private JMenuItem updateCopyItem;
     private JMenuItem listCopyItem;
 
+    private JMenuItem insertBranchItem;
+    private JMenuItem updateBranchItem;
+    private JMenuItem listBranchItem;
+
+    private JMenuItem cal1Item;
+    private JMenuItem cal2Item;
+    private JMenuItem cal3Item;
 
     private JPanel jPanel;
 
@@ -91,7 +98,7 @@ public class LibraryApp extends JFrame {
         JMenu jMenu10 = new JMenu("Copy");
         jMenu1.add(jMenu10);
 
-        insertCopyItem=new JMenuItem("append");
+        insertCopyItem=new JMenuItem("add");
         updateCopyItem=new JMenuItem("update");
         listCopyItem=new JMenuItem("list");
         jMenu10.add(insertCopyItem);
@@ -99,21 +106,21 @@ public class LibraryApp extends JFrame {
         jMenu10.add(listCopyItem);
 
 
-        insertBookItem = new JMenuItem("append");
+        insertBookItem = new JMenuItem("add");
         updateBookItem = new JMenuItem("update");
         listBookItem=new JMenuItem("list");
         jMenu2.add(insertBookItem);
         jMenu2.add(updateBookItem);
         jMenu2.add(listBookItem);
 
-        insertJournalItem=new JMenuItem("append");
+        insertJournalItem=new JMenuItem("add");
         updateJournalItem=new JMenuItem("update");
         listJournalItem=new JMenuItem("list");
         jMenu3.add(insertJournalItem);
         jMenu3.add(updateJournalItem);
         jMenu3.add(listJournalItem);
 
-        insertProceedingsItem=new JMenuItem("append");
+        insertProceedingsItem=new JMenuItem("add");
         updateProceedingItem=new JMenuItem("update");
         listProceedingItem=new JMenuItem("list");
         jMenu4.add(insertProceedingsItem);
@@ -122,7 +129,7 @@ public class LibraryApp extends JFrame {
 
         JMenu jMenu5=new JMenu("Reader(R)");
         jMenuBar.add(jMenu5);
-        insertReaderItem=new JMenuItem("append");
+        insertReaderItem=new JMenuItem("add");
         updateReaderItem=new JMenuItem("update");
         listReaderItem=new JMenuItem("list");
         jMenu5.add(insertReaderItem);
@@ -132,7 +139,7 @@ public class LibraryApp extends JFrame {
 
         JMenu jMenu6 = new JMenu("Publisher(P)");
         jMenuBar.add(jMenu6);
-        insertPublisherItem=new JMenuItem("append");
+        insertPublisherItem=new JMenuItem("add");
         updatePublisherItem=new JMenuItem("update");
         listPublisherItem=new JMenuItem("list");
         jMenu6.add(insertPublisherItem);
@@ -140,19 +147,10 @@ public class LibraryApp extends JFrame {
         jMenu6.add(listPublisherItem);
 
 
-        JMenu jMenu7 = new JMenu("Author(A)");
-        jMenuBar.add(jMenu7);
-        insertAuthorItem=new JMenuItem("append");
-        updateAuthorItem=new JMenuItem("update");
-        listAuthorItem=new JMenuItem("list");
-        jMenu7.add(insertAuthorItem);
-        jMenu7.add(updateAuthorItem);
-        jMenu7.add(listAuthorItem);
-
 
         JMenu jMenu8 = new JMenu("Reserves(E)");
         jMenuBar.add(jMenu8);
-        insertReserveItem=new JMenuItem("append");
+        insertReserveItem=new JMenuItem("add");
         updateReserveItem=new JMenuItem("update");
         listReserveItem=new JMenuItem("list");
         jMenu8.add(insertReserveItem);
@@ -168,6 +166,25 @@ public class LibraryApp extends JFrame {
         jMenu9.add(insertBorrowItem);
         jMenu9.add(updateBorrowItem);
         jMenu9.add(listBorrowItem);
+
+        JMenu jMenu11=new JMenu("Branch(H)");
+        jMenuBar.add(jMenu11);
+        insertBranchItem=new JMenuItem("add");
+        updateBranchItem=new JMenuItem("update");
+        listBranchItem=new JMenuItem("list");
+        jMenu11.add(insertBranchItem);
+        jMenu11.add(updateBranchItem);
+        jMenu11.add(listBranchItem);
+
+        JMenu jMenu12=new JMenu("Query(Q)");
+        jMenuBar.add(jMenu12);
+
+        cal1Item=new JMenuItem("borrow");
+        cal2Item=new JMenuItem("reserve");
+        cal3Item=new JMenuItem("publish");
+        jMenu12.add(cal1Item);
+        jMenu12.add(cal2Item);
+        jMenu12.add(cal3Item);
 
 
         jPanel =new JPanel();
@@ -195,7 +212,7 @@ public class LibraryApp extends JFrame {
 
         JMenu jMenu8 = new JMenu("Reserves(E)");
         jMenuBar.add(jMenu8);
-        insertReserveItem=new JMenuItem("append");
+        insertReserveItem=new JMenuItem("add");
         updateReserveItem=new JMenuItem("update");
         listReserveItem=new JMenuItem("list");
         jMenu8.add(insertReserveItem);
@@ -212,6 +229,16 @@ public class LibraryApp extends JFrame {
         jMenu9.add(updateBorrowItem);
         jMenu9.add(listBorrowItem);
 
+        JMenu jMenu12=new JMenu("Query(Q)");
+        jMenuBar.add(jMenu12);
+
+        cal1Item=new JMenuItem("borrow");
+        cal2Item=new JMenuItem("reserve");
+        cal3Item=new JMenuItem("publish");
+        jMenu12.add(cal1Item);
+        jMenu12.add(cal2Item);
+        jMenu12.add(cal3Item);
+
 
         jPanel =new JPanel();
         jPanel.setBounds(0,0,1200,800);
@@ -223,6 +250,27 @@ public class LibraryApp extends JFrame {
 
 
     private void addListener2(){
+        cal1Item.addActionListener(e -> {
+            QueryBorrowFrame  frame=new QueryBorrowFrame();
+            frame.setLocation(50,50);
+            jPanel.removeAll();
+            jPanel.add(frame);
+            frame.setVisible(true);
+        });
+        cal2Item.addActionListener(e -> {
+            QueryReserveFrame frame=new QueryReserveFrame();
+            frame.setLocation(50,50);
+            jPanel.removeAll();
+            jPanel.add(frame);
+            frame.setVisible(true);
+        });
+        cal3Item.addActionListener(e -> {
+            QueryPublishFrame frame=new QueryPublishFrame();
+            frame.setLocation(50,50);
+            jPanel.removeAll();
+            jPanel.add(frame);
+            frame.setVisible(true);
+        });
         insertBorrowItem.addActionListener(e -> {
             InsertBorrowFrame frame=new InsertBorrowFrame();
             frame.setLocation(50,50);
@@ -325,27 +373,6 @@ public class LibraryApp extends JFrame {
         });
         listBookItem.addActionListener(e -> {
             ListBookFrame frame=new ListBookFrame();
-            frame.setLocation(50,50);
-            jPanel.removeAll();
-            jPanel.add(frame);
-            frame.setVisible(true);
-        });
-        insertAuthorItem.addActionListener(e -> {
-            InsertPersonFrame frame=new InsertPersonFrame();
-            frame.setLocation(50,50);
-            jPanel.removeAll();
-            jPanel.add(frame);
-            frame.setVisible(true);
-        });
-        updateAuthorItem.addActionListener(e -> {
-            UpdatePersonFrame frame=new UpdatePersonFrame();
-            frame.setLocation(50,50);
-            jPanel.removeAll();
-            jPanel.add(frame);
-            frame.setVisible(true);
-        });
-        listAuthorItem.addActionListener(e -> {
-            ListPersonFrame frame=new ListPersonFrame();
             frame.setLocation(50,50);
             jPanel.removeAll();
             jPanel.add(frame);
@@ -477,7 +504,48 @@ public class LibraryApp extends JFrame {
             jPanel.add(frame);
             frame.setVisible(true);
         });
-
+        insertBranchItem.addActionListener(e -> {
+            InsertBranchFrame frame=new InsertBranchFrame();
+            frame.setLocation(50,50);
+            jPanel.removeAll();
+            jPanel.add(frame);
+            frame.setVisible(true);
+        });
+        updateBranchItem.addActionListener(e -> {
+            UpdateBranchFrame  frame=new UpdateBranchFrame();
+            frame.setLocation(50,50);
+            jPanel.removeAll();
+            jPanel.add(frame);
+            frame.setVisible(true);
+        });
+        listBranchItem.addActionListener(e -> {
+            ListBranchFrame  frame=new ListBranchFrame();
+            frame.setLocation(50,50);
+            jPanel.removeAll();
+            jPanel.add(frame);
+            frame.setVisible(true);
+        });
+        cal1Item.addActionListener(e -> {
+            QueryBorrowFrame  frame=new QueryBorrowFrame();
+            frame.setLocation(50,50);
+            jPanel.removeAll();
+            jPanel.add(frame);
+            frame.setVisible(true);
+        });
+        cal2Item.addActionListener(e -> {
+            QueryReserveFrame frame=new QueryReserveFrame();
+            frame.setLocation(50,50);
+            jPanel.removeAll();
+            jPanel.add(frame);
+            frame.setVisible(true);
+        });
+        cal3Item.addActionListener(e -> {
+            QueryPublishFrame frame=new QueryPublishFrame();
+            frame.setLocation(50,50);
+            jPanel.removeAll();
+            jPanel.add(frame);
+            frame.setVisible(true);
+        });
 
     }
 

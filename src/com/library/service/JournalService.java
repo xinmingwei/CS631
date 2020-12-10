@@ -92,7 +92,7 @@ public class JournalService {
     public List<Journal> list() {
         List<Journal> list=new ArrayList<>();
         Connection conn = DatabaseTool.getConn();
-        String sql = "select document.*,ji.* from document inner join journal_volumn jv on document.DocId = jv.docId inner  join journal_issue ji on jv.volumeNo = ji.VolumnNo";
+        String sql = "select document.docid, title, pdate, publisherid, author,ji.* from document inner join journal_volumn jv on document.DocId = jv.docId inner  join journal_issue ji on jv.volumeNo = ji.VolumnNo";
         try {
             assert conn != null;
             Statement statement = conn.createStatement();
@@ -103,9 +103,10 @@ public class JournalService {
                 journal.setTitle(rs.getString(2));
                 journal.setpDate(rs.getString(3));
                 journal.setPublishId(rs.getInt(4));
-                journal.setVolumeNo(rs.getInt(5));
-                journal.setIssieNo(rs.getInt(6));
-                journal.setScope(rs.getString(7));
+                journal.setAuthor(rs.getString(5));
+                journal.setVolumeNo(rs.getInt(6));
+                journal.setIssieNo(rs.getInt(7));
+                journal.setScope(rs.getString(8));
                 list.add(journal);
 
             }

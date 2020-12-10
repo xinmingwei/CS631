@@ -67,6 +67,7 @@ public class ListJournalFrame extends JInternalFrame {
         vName.add("volume no");
         vName.add("issue no");
         vName.add("scope");
+        vName.add("author");
         for (Journal journal:service.list()){
             Vector vector=new Vector();
             vector.add(journal.getDocId());
@@ -76,6 +77,7 @@ public class ListJournalFrame extends JInternalFrame {
             vector.add(journal.getVolumeNo());
             vector.add(journal.getIssieNo());
             vector.add(journal.getScope());
+            vector.add(journal.getAuthor());
             vData.add(vector);
         }
         DefaultTableModel model = new DefaultTableModel(vData, vName);

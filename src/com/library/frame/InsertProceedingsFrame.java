@@ -17,13 +17,14 @@ public class InsertProceedingsFrame extends JInternalFrame {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
+    private JTextField textField6;
     private JButton jButton;
     private JButton jButton2;
 
     public InsertProceedingsFrame() {
         setIconifiable(true);
         setClosable(true);
-        setTitle("append proceeding information");
+        setTitle("add proceeding information");
         setSize(800, 670);
         setLayout(null);
         init();
@@ -72,15 +73,24 @@ public class InsertProceedingsFrame extends JInternalFrame {
         add(textField4);
 
         JLabel jLabel5 = new JLabel("create date:");
-        jLabel5.setBounds(50, 550, 150, 30);
+        jLabel5.setBounds(50, 500, 150, 30);
         add(jLabel5);
 
         textField5 = new JTextField();
-        textField5.setBounds(150, 550, 150, 25);
+        textField5.setBounds(150, 500, 150, 25);
         add(textField5);
 
+        JLabel jLabel6 = new JLabel("author:");
+        jLabel6.setBounds(50, 550, 150, 30);
+        add(jLabel6);
 
-        jButton = new JButton("append");
+        textField6 = new JTextField();
+        textField6.setBounds(150, 550, 150, 25);
+        add(textField6);
+
+
+
+        jButton = new JButton("add");
         jButton.setBounds(400, 100, 80, 30);
         add(jButton);
 
@@ -101,6 +111,7 @@ public class InsertProceedingsFrame extends JInternalFrame {
             textField3.setText("");
             textField4.setText("");
             textField5.setText("");
+            textField6.setText("");
         });
         jButton.addActionListener(e -> {
             Proceeding proceeding = new Proceeding();
@@ -110,13 +121,14 @@ public class InsertProceedingsFrame extends JInternalFrame {
             proceeding.setPublishId(Integer.parseInt(textField3.getText()));
             proceeding.setLocation(textField4.getText());
             proceeding.setcDate(textField5.getText());
+            proceeding.setAuthor(textField6.getText());
             ProceedingService service = new ProceedingService();
             if (service.insert(proceeding)) {
                 JOptionPane.showMessageDialog(null,
-                        "append proceeding success");
+                        "add proceeding success");
             } else {
                 JOptionPane.showMessageDialog(null,
-                        "append proceeding fail");
+                        "add proceeding fail");
             }
         });
     }

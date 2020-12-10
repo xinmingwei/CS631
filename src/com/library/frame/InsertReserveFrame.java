@@ -22,7 +22,7 @@ public class InsertReserveFrame extends JInternalFrame {
     public InsertReserveFrame() {
         setIconifiable(true);
         setClosable(true);
-        setTitle("append reserve information");
+        setTitle("add reserve information");
         setSize(800, 600);
         setLayout(null);
         init();
@@ -71,7 +71,7 @@ public class InsertReserveFrame extends JInternalFrame {
         add(textField4);
 
 
-        jButton = new JButton("append");
+        jButton = new JButton("add");
         jButton.setBounds(400, 100, 80, 30);
         add(jButton);
 

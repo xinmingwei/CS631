@@ -16,12 +16,13 @@ public class InsertBookFrame extends JInternalFrame {
     private JTextField textField2;
     private JTextField textField3;
     private JTextField textField4;
+    private JTextField textField5;
     private JButton jButton;
     private JButton jButton2;
     public InsertBookFrame(){
         setIconifiable(true);
         setClosable(true);
-        setTitle("append book information");
+        setTitle("add book information");
         setSize(800,600);
         setLayout(null);
         init();
@@ -69,8 +70,16 @@ public class InsertBookFrame extends JInternalFrame {
         textField4.setBounds(150,450,150,25);
         add(textField4);
 
+        textField5=new JTextField();
+        textField5.setBounds(150,490,150,25);
+        add(textField5);
 
-        jButton=new JButton("append");
+
+        JLabel jLabel5=new JLabel("author:");
+        jLabel5.setBounds(50,490,150,30);
+        add(jLabel5);
+
+        jButton=new JButton("add");
         jButton.setBounds(400,100,80,30);
         add(jButton);
 
@@ -90,6 +99,7 @@ public class InsertBookFrame extends JInternalFrame {
             textField.setText("");
             textField3.setText("");
             textField4.setText("");
+            textField5.setText("");
         });
         jButton.addActionListener(e -> {
             Book book=new Book();
@@ -98,13 +108,14 @@ public class InsertBookFrame extends JInternalFrame {
            book.setpDate(textField2.getText());
            book.setPublishId(Integer.parseInt(textField3.getText()));
             book.setIsbn(textField4.getText());
+            book.setAuthor(textField5.getText());
             BookService service=new BookService();
             if(service.insert(book)){
                 JOptionPane.showMessageDialog(null,
-                        "append book success");
+                        "add book success");
             }else{
                 JOptionPane.showMessageDialog(null,
-                        "append book fail");
+                        "add book fail");
             }
         });
     }

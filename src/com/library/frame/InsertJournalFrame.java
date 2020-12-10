@@ -18,13 +18,14 @@ public class InsertJournalFrame extends JInternalFrame {
     private JSpinner textField4;
     private JSpinner textField5;
     private JTextField textField6;
+    private JTextField textField7;
     private JButton jButton;
     private JButton jButton2;
 
     public InsertJournalFrame() {
         setIconifiable(true);
         setClosable(true);
-        setTitle("append journal information");
+        setTitle("add journal information");
         setSize(800, 670);
         setLayout(null);
         init();
@@ -81,15 +82,22 @@ public class InsertJournalFrame extends JInternalFrame {
         add(textField5);
 
         JLabel jLabel6 = new JLabel("scope:");
-        jLabel6.setBounds(350, 550, 150, 30);
+        jLabel6.setBounds(350, 500, 150, 30);
         add(jLabel6);
 
         textField6 = new JTextField();
-        textField6.setBounds(450, 550, 150, 25);
+        textField6.setBounds(450, 500, 150, 25);
         add(textField6);
 
+        JLabel jLabel7= new JLabel("author:");
+        jLabel7.setBounds(350, 550, 150, 30);
+        add(jLabel6);
 
-        jButton = new JButton("append");
+        textField7 = new JTextField();
+        textField7.setBounds(450, 550, 150, 25);
+        add(textField7);
+
+        jButton = new JButton("add");
         jButton.setBounds(400, 100, 80, 30);
         add(jButton);
 
@@ -111,6 +119,7 @@ public class InsertJournalFrame extends JInternalFrame {
             textField4.setValue(0);
             textField5.setValue(0);
             textField6.setText("");
+            textField7.setText("");
         });
         jButton.addActionListener(e -> {
             Journal journal =new Journal();
@@ -121,13 +130,14 @@ public class InsertJournalFrame extends JInternalFrame {
             journal.setVolumeNo((Integer) textField4.getValue());
             journal.setIssieNo((Integer) textField5.getValue());
             journal.setScope(textField6.getText());
+            journal.setAuthor(textField7.getText());
             JournalService service = new JournalService();
             if (service.insert(journal)) {
                 JOptionPane.showMessageDialog(null,
-                        "append journal success");
+                        "add journal success");
             } else {
                 JOptionPane.showMessageDialog(null,
-                        "append journal fail");
+                        "add journal fail");
             }
         });
     }

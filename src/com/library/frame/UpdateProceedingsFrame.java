@@ -15,6 +15,7 @@ public class UpdateProceedingsFrame extends JInternalFrame {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
+    private JTextField textField6;
     private JButton jButton;
     private JButton jButton2;
 
@@ -70,12 +71,20 @@ public class UpdateProceedingsFrame extends JInternalFrame {
         add(textField4);
 
         JLabel jLabel5 = new JLabel("create date:");
-        jLabel5.setBounds(50, 550, 150, 30);
+        jLabel5.setBounds(50, 500, 150, 30);
         add(jLabel5);
 
         textField5 = new JTextField();
-        textField5.setBounds(150, 550, 150, 25);
+        textField5.setBounds(150, 500, 150, 25);
         add(textField5);
+
+        JLabel jLabel6 = new JLabel("author:");
+        jLabel6.setBounds(50, 550, 150, 30);
+        add(jLabel6);
+
+        textField6 = new JTextField();
+        textField6.setBounds(150, 550, 150, 25);
+        add(textField6);
 
 
         jButton = new JButton("update");

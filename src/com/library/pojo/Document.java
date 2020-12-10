@@ -11,6 +11,24 @@ public class Document {
     private String title;
     private String pDate;
     private Integer publishId;
+    private Integer branchId;
+    private String author;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Integer getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(Integer branchId) {
+        this.branchId = branchId;
+    }
 
     public Integer getDocId() {
         return docId;
@@ -44,13 +62,4 @@ public class Document {
         this.publishId = publishId;
     }
 
-    @Override
-    public String toString() {
-        return "Document{" +
-                "docId=" + docId +
-                ", title='" + title + '\'' +
-                ", pDate='" + pDate + '\'' +
-                ", publishId='" + publishId + '\'' +
-                '}';
-    }
 }

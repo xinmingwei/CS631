@@ -68,7 +68,7 @@ public class InsertReaderFrame extends JInternalFrame {
         add(textField4);
 
 
-        jButton=new JButton("append");
+        jButton=new JButton("add");
         jButton.setBounds(400,100,80,30);
         add(jButton);
 
